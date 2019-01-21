@@ -12,6 +12,34 @@
     </head>
 
     <body>
+        <div>
+            <h2>Search</h2>
+            <div>
+                <input type="text" placeholder="pesquisar">
+                <button>buscar</button>
+            </div>
+
+        </div>
+        
+        <div>
+            <h2>Select</h2>
+            <div>
+                <select>
+                    <option value="categoria-1">Categoria 1</option>
+                    <option value="categoria-2">Categoria 2</option>
+                    <option value="categoria-3">Categoria 3</option>
+                    <option value="categoria-4">Categoria 4</option>
+                </select>
+
+                <select>
+                    <option value="sub-categoria-1">Sub-Categoria 1</option>
+                    <option value="sub-categoria-2">Sub-Categoria 2</option>
+                    <option value="sub-categoria-3">Sub-Categoria 3</option>
+                    <option value="sub-categoria-4">Sub-Categoria 4</option>
+                </select>                
+            </div>
+
+        </div>
         <?php wp_footer(); ?>
     </body>
 </html>    
