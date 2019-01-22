@@ -16,12 +16,15 @@
             <h2>Search</h2>
             <div>
                 <input type="text" placeholder="pesquisar">
-                <button>buscar</button>
+                <button id="btn-buscar">buscar</button>
             </div>
 
+            <img id="loading" class="d-none" src="<?php bloginfo( 'template_url' );?>/static/images/loading.gif" alt="">
+
+            <div id="resultado-search"></div>   
         </div>
         
-        <div>
+        <!-- <div>
             <h2>Select</h2>
             <div>
                 <select>
@@ -39,7 +42,7 @@
                 </select>                
             </div>
 
-        </div>
+        </div> -->
         <?php wp_footer(); ?>
     </body>
 </html>    

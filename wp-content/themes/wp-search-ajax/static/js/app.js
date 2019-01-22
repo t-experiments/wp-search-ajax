@@ -8,13 +8,19 @@ jQuery(function($){
                 'action': 'listar_posts'
             },
             beforeSend: function(){
-                console.log('carregando posts...');
+                $('#loading').removeClass('d-none');
             }
         })
         .done(function(resposta){
-            console.log(resposta);
+            $('#loading').addClass('d-none');
+            $('#resultado-search').html(resposta)
         });
     }
 
-    listarPostsAjax();
+    // listarPostsAjax();
+
+    // Ação do botão pesquisar
+    $('#btn-buscar').on('click', function(){
+        listarPostsAjax();
+    });
 });

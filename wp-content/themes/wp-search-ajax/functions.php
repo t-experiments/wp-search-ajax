@@ -1,6 +1,22 @@
 <?php 
     function listar_posts() {
-        echo 'função listar posts';
+
+        $args = [ 'post_type' => 'post', 'posts_per_page' => 3, 's' => 'corinthians' ];
+
+        $posts = new WP_Query($args);
+
+        ?>
+        
+        <?php if( $posts->have_posts() ):?>    
+            <?php while( $posts->have_posts() ): $posts->the_post();?>
+                <?php the_title('<h2>', '</h2>');?>
+                <?php the_excerpt();?>
+            <?php endwhile;?>
+        <?php else:?>
+            <p>Nenhum conteúdo encontrado</p>
+        <?php endif;?>
+
+<?php        
         exit;
     }
 
