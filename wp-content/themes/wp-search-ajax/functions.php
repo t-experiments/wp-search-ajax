@@ -3,23 +3,39 @@
 
         $string = $_GET['string'];
 
-        $args = [ 'post_type' => 'post', 'posts_per_page' => 3, 's' => $string ];
+        $args = [ 
+            'post_type' => 'post', 
+            'posts_per_page' => 3, 
+            's' => $string 
+        ];
 
+        // armazena a query
         $posts = new WP_Query($args);
 
-        ?>
-        
-        <?php if( $posts->have_posts() && $string !== ''  ):?>    
-            <?php while( $posts->have_posts() ): $posts->the_post();?>
-                <?php the_title('<h2>', '</h2>');?>
-                <?php the_excerpt();?>
-            <?php endwhile;?>
-        <?php else:?>
-            <p>Nenhum conteúdo encontrado</p>
-        <?php endif;?>
+        if($posts->have_posts()) {
+            $itens = [];
 
-<?php        
-        exit;
+            while($posts->have_posts()){
+                $posts->the_post();
+
+                $item = [
+                    'titulo' => get_the_title(),
+                    'resumo' => get_the_excerpt()
+                ];
+
+                array_push($itens, $item);
+            }
+
+            $resposta = [ 'msg' => 'Posts encontrados.', 'posts' => $itens ];
+            wp_send_json_success($resposta);
+        
+        } else {
+        
+            $resposta = [ 'msg' => 'Nenhum post encontrado.' ];
+            wp_send_json_error($resposta);
+        
+        }
+
     }
 
     add_action('wp_ajax_listar_posts', 'listar_posts');
