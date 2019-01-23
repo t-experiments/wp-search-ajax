@@ -15,7 +15,7 @@
         <div>
             <h2>Search</h2>
             <div>
-                <input type="text" placeholder="pesquisar">
+                <input id="input-buscar" type="text" placeholder="pesquisar">
                 <button id="btn-buscar">buscar</button>
             </div>
 

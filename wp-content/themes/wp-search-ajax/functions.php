@@ -1,13 +1,15 @@
 <?php 
     function listar_posts() {
 
-        $args = [ 'post_type' => 'post', 'posts_per_page' => 3, 's' => 'corinthians' ];
+        $string = $_GET['string'];
+
+        $args = [ 'post_type' => 'post', 'posts_per_page' => 3, 's' => $string ];
 
         $posts = new WP_Query($args);
 
         ?>
         
-        <?php if( $posts->have_posts() ):?>    
+        <?php if( $posts->have_posts() && $string !== ''  ):?>    
             <?php while( $posts->have_posts() ): $posts->the_post();?>
                 <?php the_title('<h2>', '</h2>');?>
                 <?php the_excerpt();?>

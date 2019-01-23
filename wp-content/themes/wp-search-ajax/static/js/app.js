@@ -1,11 +1,14 @@
 jQuery(function($){
     /* listar posts */
-    var listarPostsAjax = function(){
+
+    var string = '';
+    var listarPostsAjax = function(string){
         $.ajax({
             url: wp.ajaxurl,
             type: 'GET',
             data: {
-                'action': 'listar_posts'
+                action: 'listar_posts',
+                string: string
             },
             beforeSend: function(){
                 $('#loading').removeClass('d-none');
@@ -13,14 +16,15 @@ jQuery(function($){
         })
         .done(function(resposta){
             $('#loading').addClass('d-none');
-            $('#resultado-search').html(resposta)
+            $('#resultado-search').html(resposta);
         });
     }
 
-    // listarPostsAjax();
+    listarPostsAjax(string);
 
     // Ação do botão pesquisar
     $('#btn-buscar').on('click', function(){
-        listarPostsAjax();
+        var string = $('#input-buscar').val();
+        listarPostsAjax(string);
     });
 });
