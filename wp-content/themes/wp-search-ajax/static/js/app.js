@@ -48,4 +48,14 @@ jQuery(function($){
         var string = $('#input-buscar').val();
         listarPostsAjax(string);
     });
+
+    // Ação do select categoria
+    $('.select-categoria').change('on', function(){
+        console.log('select-categoria');
+    });
+
+    // Ação do select sub categoria
+    $('.select-sub-categoria').change('on', function(){
+        console.log('select-sub-categoria');
+    });    
 });

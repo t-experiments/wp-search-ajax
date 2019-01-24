@@ -1,4 +1,11 @@
 <?php 
+    function listar_categorias() {
+        $args = [
+            'orderby' => 'name',
+            'order' => 'ASC'
+        ];
+    }
+    
     function listar_posts() {
 
         $string = $_GET['string'];
@@ -55,7 +62,7 @@
         
           
         // tema
-	    wp_enqueue_style( 'theme', $css_folder . '/style.css', 1, 1, 'all' );
+	    wp_enqueue_style( 'theme', $css_folder . '/style.css', 1, $versao, 'all' );
 	    wp_enqueue_script( 'app', $js_folder . '/app.js', null, $versao, true );
         
         $wpVars = [ 'ajaxurl' => admin_url( 'admin-ajax.php' ) ];

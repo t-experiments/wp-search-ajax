@@ -12,7 +12,7 @@
     </head>
 
     <body>
-        <div>
+        <div class="box">
             <h2>Search</h2>
             <div>
                 <input id="input-buscar" type="text" placeholder="pesquisar">
@@ -24,17 +24,17 @@
             <div id="resultado-search"></div>   
         </div>
         
-        <!-- <div>
+        <div class="box">
             <h2>Select</h2>
             <div>
-                <select>
+                <select class="select-categoria">
                     <option value="categoria-1">Categoria 1</option>
                     <option value="categoria-2">Categoria 2</option>
                     <option value="categoria-3">Categoria 3</option>
                     <option value="categoria-4">Categoria 4</option>
                 </select>
 
-                <select>
+                <select class="select-sub-categoria">
                     <option value="sub-categoria-1">Sub-Categoria 1</option>
                     <option value="sub-categoria-2">Sub-Categoria 2</option>
                     <option value="sub-categoria-3">Sub-Categoria 3</option>
@@ -42,7 +42,7 @@
                 </select>                
             </div>
 
-        </div> -->
+        </div>
         <?php wp_footer(); ?>
     </body>
 </html>    
