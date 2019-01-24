@@ -12,7 +12,7 @@
         // armazena a query
         $posts = new WP_Query($args);
 
-        if($posts->have_posts()) {
+        if($posts->have_posts() && $string !== '') {
             $itens = [];
 
             while($posts->have_posts()){

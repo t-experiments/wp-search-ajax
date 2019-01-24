@@ -16,11 +16,32 @@ jQuery(function($){
         })
         .done(function(resposta){
             $('#loading').addClass('d-none');
-            $('#resultado-search').html(resposta);
+            $('#resultado-search').html('');
+            
+            var success = resposta.success;
+            var posts = resposta.data.posts;
+
+            if(success) {
+                $.each(posts, function(i, post){
+                    $('#resultado-search').append(
+                        `<h2>${post.titulo}</h2>
+                        <p>${post.resumo}</p>
+                        `
+                    );
+                });
+            } else {
+                $('#resultado-search').html(
+                    `<p class="msg-erro">
+                        ${resposta.data.msg}
+                    </p>
+                    `
+                );                
+            }
+
         });
     }
 
-    listarPostsAjax(string);
+    //listarPostsAjax(string);
 
     // Ação do botão pesquisar
     $('#btn-buscar').on('click', function(){
