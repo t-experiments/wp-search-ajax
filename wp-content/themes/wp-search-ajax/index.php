@@ -27,18 +27,38 @@
         <div class="box">
             <h2>Select</h2>
             <div>
-                <select class="select-categoria">
-                    <option value="categoria-1">Categoria 1</option>
-                    <option value="categoria-2">Categoria 2</option>
-                    <option value="categoria-3">Categoria 3</option>
-                    <option value="categoria-4">Categoria 4</option>
-                </select>
+                <!-- listagem de categorias-->
+                <?php
+                    $args = array(
+                        'orderby'           => 'name', 
+                        'order'             => 'ASC', 
+                        'parent'            => 10
+                    );
 
+                    $terms = get_terms( 'category', $args );
+
+                    var_dump($terms);
+                ?> 
+                <select class="select-categoria">
+                    <?php foreach($terms as $term):?>
+                        <option value="<?php echo $term->term_id;?>"><?php echo $term->name;?></option>
+                    <?php endforeach;?>
+                </select>  
+                
+                <!-- listagem de subcategorias-->
+                <?php
+                    $args = array(
+                        'orderby'           => 'name', 
+                        'order'             => 'ASC', 
+                        'parent'            => 6
+                    );
+
+                    $terms = get_terms( 'category', $args );
+                ?> 
                 <select class="select-sub-categoria">
-                    <option value="sub-categoria-1">Sub-Categoria 1</option>
-                    <option value="sub-categoria-2">Sub-Categoria 2</option>
-                    <option value="sub-categoria-3">Sub-Categoria 3</option>
-                    <option value="sub-categoria-4">Sub-Categoria 4</option>
+                    <?php foreach($terms as $term):?>
+                        <option value="<?php echo $term->term_id;?>"><?php echo $term->name;?></option>
+                    <?php endforeach;?>
                 </select>                
             </div>
 

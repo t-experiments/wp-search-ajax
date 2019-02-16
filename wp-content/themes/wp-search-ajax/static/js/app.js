@@ -49,13 +49,36 @@ jQuery(function($){
         listarPostsAjax(string);
     });
 
-    // Ação do select categoria
+   
+    // Ação do select campeonato (categoria)
     $('.select-categoria').change('on', function(){
-        console.log('select-categoria');
+        var idTime = $(this).val();
+
+        $('.select-sub-categoria').html('<option value="">buscando times</option>');
+        selecionarTimeAjax();
     });
 
-    // Ação do select sub categoria
+
+    // Função Ajax Selecionar Campeonato 
+    var selecionarTimeAjax = function (id_campeonato) {
+        $.ajax({
+            url: wp.ajaxurl,
+            type: 'GET',
+            data: {
+                action: 'selecionar_campeonato',
+            },
+            beforeSend: function () {
+                console.log('Selecionando Times');
+            }
+        })
+        .done(function (resposta) {
+             console.log(resposta);   
+        });
+    }
+
+    // Ação do select time (sub categoria)
     $('.select-sub-categoria').change('on', function(){
         console.log('select-sub-categoria');
+        // selecionarTimeAjax();
     });    
 });

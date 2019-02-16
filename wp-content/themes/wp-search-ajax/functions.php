@@ -46,7 +46,22 @@
     }
 
     add_action('wp_ajax_listar_posts', 'listar_posts');
-    add_action('wp_ajax_nopriv_listar_posts', 'listar_posts');
+    add_action('wp_ajax_nopriv_listar_posts', 'listar_posts');  
+
+    // Selecionar Campeonato
+    function selecionar_campeonato() {
+        $args = array(
+            'orderby'           => 'name', 
+            'order'             => 'ASC', 
+            'parent'            => 10
+        );
+
+        $terms = get_terms( 'category', $args );
+        echo json_encode($terms);
+        exit;
+    }
+    add_action('wp_ajax_selecionar_campeonato', 'selecionar_campeonato');
+    add_action('wp_ajax_nopriv_selecionar_campeonato', 'selecionar_campeonato'); 
 
 
     function app_scripts() {
