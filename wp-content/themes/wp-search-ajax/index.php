@@ -23,46 +23,7 @@
 
             <div id="resultado-search"></div>   
         </div>
-        
-        <div class="box">
-            <h2>Select</h2>
-            <div>
-                <!-- listagem de categorias-->
-                <?php
-                    $args = array(
-                        'orderby'           => 'name', 
-                        'order'             => 'ASC', 
-                        'parent'            => 10
-                    );
-
-                    $terms = get_terms( 'category', $args );
-
-                    var_dump($terms);
-                ?> 
-                <select class="select-categoria">
-                    <?php foreach($terms as $term):?>
-                        <option value="<?php echo $term->term_id;?>"><?php echo $term->name;?></option>
-                    <?php endforeach;?>
-                </select>  
-                
-                <!-- listagem de subcategorias-->
-                <?php
-                    $args = array(
-                        'orderby'           => 'name', 
-                        'order'             => 'ASC', 
-                        'parent'            => 6
-                    );
-
-                    $terms = get_terms( 'category', $args );
-                ?> 
-                <select class="select-sub-categoria">
-                    <?php foreach($terms as $term):?>
-                        <option value="<?php echo $term->term_id;?>"><?php echo $term->name;?></option>
-                    <?php endforeach;?>
-                </select>                
-            </div>
-
-        </div>
+    
         <?php wp_footer(); ?>
     </body>
 </html>    
